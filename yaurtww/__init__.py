@@ -27,14 +27,12 @@ from docopt import docopt
 import grequests
 
 
-def _parse_file(filename):
-    with open(arguments['filename'], 'r') as f:
+def _parse_filenames(filename):
+    with open(filename, 'r') as f:
         for line in f:
             lineitems = line.split('  ')
             if len(lineitems) == 2:
                 yield lineitems[1][:-1]
-            elif line.startswith("Version"):
-                return _parse_version(line)
 
 def _parse_version(line):
     """
@@ -62,5 +60,5 @@ def main():
         return
 
     if arguments['<filename>']:
-        files = _parse_file(arguments['<filename>'])
+        files = _parse_filenames(arguments['<filename>'])
         urls = [_get_url(file_to_dl) for file_to_dl in files]
