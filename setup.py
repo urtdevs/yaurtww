@@ -44,6 +44,7 @@ setuptools.setup(
     packages=["yaurtww"],
     install_requires=[
         "grequests==0.2.0",
+        "docopt==0.6.1"
     ],
     entry_points={
         "console_scripts": ["yaurtww=yaurtww:main"]
