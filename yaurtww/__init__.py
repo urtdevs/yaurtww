@@ -36,6 +36,17 @@ def _parse_file(filename):
             elif line.startswith("Version"):
                 return _parse_version(line)
 
+def _parse_version(line):
+    """
+    There's a magic suffix to the release version, currently it's -03, but it
+    increments seemingly randomly.
+    """
+    version_string = line.split(' ')[1]
+    version_list = version_string.split('.')
+    major_version = ''.join(version_list[0], version_list[1])
+    release_num = ''.join(version_list[2], "-03")
+    return (major_version, release_num)
+
 def _get_url(filename):
     """
     Returns url for cdn.urbanterror.info to pass to _not_wget().
