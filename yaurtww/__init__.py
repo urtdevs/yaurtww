@@ -23,35 +23,20 @@ __all__ = [
 ]
 
 
+from .manifest import Manifest
 from docopt import docopt
 import grequests
 
 
 def _parse_filenames(filename):
     with open(filename, 'r') as f:
+        line.startswith("Version"):
+            self.major_version = _parse_version(line)[0]
+            self.
         for line in f:
             lineitems = line.split('  ')
             if len(lineitems) == 2:
                 yield lineitems[1][:-1]
-
-def _parse_version(line):
-    """
-    There's a magic suffix to the release version, currently it's -03, but it
-    increments seemingly randomly.
-    """
-    version_string = line.split(' ')[1]
-    version_list = version_string.split('.')
-    major_version = ''.join(version_list[0], version_list[1])
-    release_num = ''.join(version_list[2], "-03")
-    return (major_version, release_num)
-
-def _get_url(filename):
-    """
-    Returns url for cdn.urbanterror.info to pass to _not_wget().
-
-    http://cdn.urbanterror.info/urt/<major_ver_without_.>/<release_num>/q3ut4/<filename>
-    """
-    _CDN_URL = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
 
 def main():
     arguments = docopt(__doc__, version=__version__)
