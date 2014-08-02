@@ -29,10 +29,13 @@ class Manifest():
         return self.cdn_url.format(self.mver, self.relnum, filename)
 
     def _parse_manifest(self, filename):
+        """
+        Read the defined file, parse and set Version line, and return generator of filenames.
+        """
         with open(filename, 'r') as f:
             for line in f:
                 if line.startswith("Version"):
                     self._parse_version(line)
                 lineitems = line.split('  ')
                 if len(lineitems) == 2:
-                    yield lineitems[1][:-1]
+                    yield self._get_url(lineitems[1][:-1])
