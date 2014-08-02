@@ -39,3 +39,6 @@ class Manifest():
                 lineitems = line.split('  ')
                 if len(lineitems) == 2:
                     yield self._get_url(lineitems[1][:-1])
+
+    def map_files(self):
+        return grequests.map(self.files)
