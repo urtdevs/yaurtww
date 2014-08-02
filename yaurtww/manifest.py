@@ -20,5 +20,5 @@ class Manifest():
         """
         Returns url for cdn.urbanterror.info to pass to _not_wget().
 
-        http://cdn.urbanterror.info/urt/<major_ver_without_.>/<release_num>/q3ut4/<filename>
+        http://cdn.urbanterror.info/urt/<major_ver_without_.>/<release_num>-<magic_number>/q3ut4/<filename>
         """
