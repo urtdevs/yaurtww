@@ -35,5 +35,5 @@ def main():
         return
 
     if arguments['<filename>']:
-        files = _parse_filenames(arguments['<filename>'])
-        urls = [_get_url(file_to_dl) for file_to_dl in files]
+        manifest = Manifest()
+        files = manifest.map_files()
