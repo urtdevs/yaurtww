@@ -28,16 +28,6 @@ from docopt import docopt
 import grequests
 
 
-def _parse_filenames(filename):
-    with open(filename, 'r') as f:
-        line.startswith("Version"):
-            self.major_version = _parse_version(line)[0]
-            self.
-        for line in f:
-            lineitems = line.split('  ')
-            if len(lineitems) == 2:
-                yield lineitems[1][:-1]
-
 def main():
     arguments = docopt(__doc__, version=__version__)
     if arguments['--version']:
