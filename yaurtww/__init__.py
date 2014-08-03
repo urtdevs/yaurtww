@@ -35,5 +35,5 @@ def main():
         return
 
     if arguments['<filename>']:
-        manifest = Manifest()
+        manifest = Manifest(arguments['<filename>'])
         files = manifest.files
