@@ -40,4 +40,5 @@ class Manifest():
                     yield self._get_url(lineitems[1][:-1])
 
     def map_files(self):
-        return grequests.map(self.files)
+        _files = (grequests.get(_get_url(filename)) for filename in self.files)
+        return grequests.map(_files)
