@@ -6,7 +6,7 @@ class Manifest():
         self.cdn_url = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
         self.mver = ""
         self.relnum = ""
-        self.files = [asset for asset in self._parse_manifest(filename)]
+        self.files = grequests.imap(self._parse_manifest(filename))
 
     def _parse_version(self, line):
         """
@@ -37,8 +37,5 @@ class Manifest():
                     self.mver, self.rel_num = self._parse_version(line)
                 lineitems = line.split('  ')
                 if len(lineitems) == 2:
-                    yield self._get_url(lineitems[1][:-1])
-
-    def map_files(self):
-        _files = (grequests.get(_get_url(filename)) for filename in self.files)
-        return grequests.map(_files)
+                    asset_url = self._get_url(lineitems[1][:-1])
+                    yield grequests.get(asset_url)

@@ -36,4 +36,4 @@ def main():
 
     if arguments['<filename>']:
         manifest = Manifest()
-        files = manifest.map_files()
+        files = manifest.files
