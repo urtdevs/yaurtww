@@ -34,7 +34,7 @@ class Manifest():
         with open(filename, 'r') as f:
             for line in f:
                 if line.startswith("Version"):
-                    self.mver, self.rel_num = self._parse_version(line)
+                    self.mver, self.relnum = self._parse_version(line)
                 lineitems = line.split('  ')
                 if len(lineitems) == 2:
                     asset_url = self._get_url(lineitems[1][:-1])
