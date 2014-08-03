@@ -15,8 +15,8 @@ class Manifest():
         """
         version_string = line.split(' ')[1]
         version_list = version_string.split('.')
-        major_version = ''.join(version_list[0], version_list[1])
-        release_num = ''.join(version_list[2], "-03")
+        major_version = ''.join([version_list[0:2]])
+        release_num = ''.join([version_list[2], "-03"])
         return (major_version, release_num)
 
     def _get_url(self, filename):
