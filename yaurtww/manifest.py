@@ -2,12 +2,12 @@ import grequests
 
 
 class Manifest():
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, manifest_file):
+        self.manifest_file = manifest_file
         self.cdn_url = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
         self.mver = ""
         self.relnum = ""
-        self.files = grequests.imap(self._parse_manifest(self.filename))
+        self.files = grequests.imap(self._parse_manifest(self.manifest_file))
 
     def _parse_version(self, line):
         """
@@ -32,7 +32,7 @@ class Manifest():
         """
         Read the defined file, parse and set Version line, and return generator of filenames.
         """
-        with open(self.filename, 'r') as f:
+        with open(self.manifest_file, 'r') as f:
             for line in f:
                 if line.startswith("Version"):
                     self.mver, self.relnum = self._parse_version(line)
