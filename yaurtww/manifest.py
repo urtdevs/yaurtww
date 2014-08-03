@@ -38,4 +38,4 @@ class Manifest():
                 lineitems = line.split('  ')
                 if len(lineitems) == 2:
                     asset_url = self._get_url(lineitems[1][:-1])
-                    yield grequests.get(asset_url)
+                    yield grequests.get(asset_url, stream=True)
