@@ -25,6 +25,7 @@ __all__ = [
 
 from .manifest import Manifest
 from docopt import docopt
+from os.path import abspath, expanduser
 import grequests
 
 
@@ -35,5 +36,6 @@ def main():
         return
 
     if arguments['<filename>']:
-        manifest = Manifest(arguments['<filename>'])
+        manifest_file = abspath(expanduser(arguments['<filename>']))
+        manifest = Manifest(manifest_file)
         files = manifest.files
