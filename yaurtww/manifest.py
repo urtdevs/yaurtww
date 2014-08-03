@@ -1,8 +1,10 @@
 import grequests
+import os
 
 
 class Manifest():
-    def __init__(self, manifest_file):
+    def __init__(self, manifest_file, target_dir=os.getcwd()):
+        self.target_dir = target_dir
         self.manifest_file = manifest_file
         self.cdn_url = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
         self.mver = ""
