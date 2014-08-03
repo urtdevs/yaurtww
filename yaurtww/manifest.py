@@ -6,8 +6,7 @@ class Manifest():
         self.cdn_url = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
         self.mver = ""
         self.relnum = ""
-        self.files = (
-            grequests.get(url) for url in self._parse_manifest(filename))
+        self.files = [asset for asset in self._parse_manifest(filename)]
 
     def _parse_version(self, line):
         """
