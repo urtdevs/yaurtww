@@ -24,6 +24,7 @@ __all__ = [
 
 
 from .manifest import Manifest
+from contextlib import closing
 from docopt import docopt
 from os.path import abspath, expanduser
 import grequests
@@ -38,4 +39,8 @@ def main():
     if arguments['<filename>']:
         manifest_file = abspath(expanduser(arguments['<filename>']))
         manifest = Manifest(manifest_file)
-        files = manifest.files
+        for asset in manifest.files:
+            _target_file = asset.url.split('/')[-1]
+            with closing(asset) as content:
+                with open(''.join(['q3ut4/', _target_file]), 'w') as f:
+                    f.write(content)
