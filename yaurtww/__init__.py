@@ -26,9 +26,10 @@ __all__ = [
 from .manifest import Manifest
 from contextlib import closing
 from docopt import docopt
-from os import getcwd, mkdirs
+from os import getcwd
 from os.path import abspath, exists, expanduser
 import grequests
+import os
 
 
 def main():
@@ -42,7 +43,7 @@ def main():
         _target = arguments['--dest'] if arguments['--dest'] else _default_dir
         _target = abspath(expanduser(_target))
         if not exists(_target):
-            mkdirs(_target)
+            os.mkdirs(_target)
 
         manifest_file = abspath(expanduser(arguments['<filename>']))
         manifest = Manifest(manifest_file)
