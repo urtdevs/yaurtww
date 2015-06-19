@@ -40,7 +40,7 @@ def main():
         return
 
     if arguments['<filename>']:
-        _target = arguments['--dest'] if arguments['--dest'] else _default_dir
+        _target = arguments.get('--dest', _default_dir)
         _target = abspath(expanduser(_target))
         if not exists(_target):
             os.mkdirs(_target)
