@@ -45,5 +45,5 @@ def main():
         for asset in manifest.files:
             _target_file = asset.url.split('/')[-1]
             with closing(asset) as content:
-                with open(''.join([_target, _target_file]), 'w') as f:
+                with open(''.join([_target, _target_file]), 'w+') as f:
                     f.write(content)
