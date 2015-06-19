@@ -9,7 +9,7 @@ class Manifest():
         self.cdn_url = "http://cdn.urbanterror.info/urt/{0}/{1}/q3ut4/{2}"
         self.mver = ""
         self.relnum = ""
-        self.files = grequests.imap(self._parse_manifest(self.manifest_file))
+        self.files = grequests.imap(self._parse_manifest())
 
     def _parse_version(self, line):
         """
